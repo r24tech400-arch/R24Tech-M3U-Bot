@@ -749,13 +749,12 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 # --- Main Bot Setup ---
 
-def main() -> None:
-    """Run the bot."""
-    # Get token from environment variable
-    TOKEN = "8318099986:AAFa3VRaEcJyqi-wkVMiqbF1EInqkyVzA54"
-    if not TOKEN:
-        print("Error: TELEGRAM_BOT_TOKEN environment variable not set.", file=sys.stderr)
-        sys.exit(1)
+# Get token from environment variable
+TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN") # This line looks for tokens from the environment.
+if not TOKEN:
+    print("Error: TELEGRAM_BOT_TOKEN environment variable not set.", file=sys.stderr)
+    sys.exit(1)
+
 
         
     application = Application.builder().token(TOKEN).build()
